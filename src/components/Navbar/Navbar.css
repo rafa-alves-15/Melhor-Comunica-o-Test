@@ -1,0 +1,23 @@
+.logo {
+  background-color: #054a91;
+  justify-content: center;
+}
+
+.name {
+  padding-right: 1%;
+  bottom: 7px;
+  padding-left: 47%;
+  width: 47px;
+  height: 77px;
+  text-align: center;
+  font: normal normal bold 56px/12px Nunito;
+  letter-spacing: 0px;
+  color: #dae3ed;
+  opacity: 1;
+}
+
+.fas {
+  color: black;
+  margin-top: 42%;
+  font-size: 110%;
+}
