@@ -1,0 +1,13 @@
+.title {
+  margin-top: 7%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-text {
+  text-align: left;
+  font: normal normal medium 14px/17px Roboto;
+  letter-spacing: 0px;
+  color: #1d1d1d;
+  opacity: 1;
+}
