@@ -54,7 +54,7 @@ export default class ListPhone extends React.Component {
                 <tr key={mobile._id}>
                   <td>{mobile.code}</td>
                   <td>{mobile.model}</td>
-                  <td>{mobile.price}</td>
+                  <td>R$ {mobile.price},00</td>
                   <td>{mobile.brand}</td>
                   <td>{mobile.color}</td>
                   <td className="d-flex align-items-center">
