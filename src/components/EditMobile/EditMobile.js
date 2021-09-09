@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./EditMobile.css";
 import api from "../../api/api";
 
-export default class Mobile extends React.Component {
+export default class EditMobile extends React.Component {
   componentDidMount = async () => {
     try {
       const id = this.props.match.params._id;

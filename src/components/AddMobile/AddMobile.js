@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./AddMobile.css";
 import api from "../../api/api";
 
-export default class Mobile extends React.Component {
+export default class AddMobile extends React.Component {
   ToDate = (value) => {
     let date = new Date(value);
 
