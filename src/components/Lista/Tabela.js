@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
-import "./Tabela.css";
 
 export default class ListPhone extends React.Component {
   state = {
@@ -20,25 +19,15 @@ export default class ListPhone extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  <h3>Produto</h3>
-                </th>
-                <th>
-                  <Link className="btn btn-outline-dark" to="add-phone">
-                    <h5>
-                      +<i className="fas fa-mobile-alt"> Adicionar</i>
-                    </h5>
-                  </Link>
-                </th>
-              </tr>
-            </thead>
-          </table>
+        <div className="d-flex justify-content-between mb-4">
+          <h3>Produto</h3>
+          <Link className="btn btn-outline-dark" to="add-phone">
+            <h5>
+              +<i className="fas fa-mobile-alt"> Adicionar</i>
+            </h5>
+          </Link>
         </div>
-        <table className="table table-hover border border-secondary ">
+        <table className="table border border-dark border-1-solid-dark">
           <thead>
             <tr>
               <th>Codigo</th>
@@ -57,7 +46,7 @@ export default class ListPhone extends React.Component {
                   <td>R$ {mobile.price},00</td>
                   <td>{mobile.brand}</td>
                   <td>{mobile.color}</td>
-                  <td className="d-flex align-items-center">
+                  <td className="d-flex align-items-center justify-content-around">
                     <Link to={`/edit-phone/${mobile._id}`} title="Edit">
                       <i className="fas fa-pen text-black"></i>
                     </Link>

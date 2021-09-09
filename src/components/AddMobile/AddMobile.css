@@ -11,3 +11,18 @@
   color: #1d1d1d;
   opacity: 1;
 }
+
+.add-footer {
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 12%;
+  justify-content: center;
+}
+
+.add-voltar {
+  margin-left: 16%;
+}
+
+.add-salvar {
+  margin-left: 5%;
+}

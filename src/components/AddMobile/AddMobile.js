@@ -156,11 +156,14 @@ export default class Mobile extends React.Component {
               </tbody>
             </table>
           </div>
-          <div className="form-group d-flex justify-content-around">
-            <Link className="btn btn-outline-dark text-black" to="/">
-              <h6>Voltar</h6>
-            </Link>
-            <div className="salve">
+          <div className="add-footer">
+            <div className="add-voltar">
+              <Link className="btn btn-outline-dark text-black " to="/">
+                <h6>Voltar</h6>
+              </Link>
+            </div>
+
+            <div className="add-salvar">
               <button
                 className="btn btn-outline-dark text-black"
                 type="submit"

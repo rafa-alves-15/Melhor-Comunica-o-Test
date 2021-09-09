@@ -1,10 +1,11 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ListPhone from "./Lista/Tabela";
-import AddMobile from "./AddMobile/AddMobile.js";
-import EditMobile from "./EditMobile/EditMobile.js"
-import DelMobile from "./DelMobile/DelMobile.js"
+import AddMobile from "./AddMobile/AddMobile";
+import EditMobile from "./EditMobile/EditMobile";
+import DelMobile from "./DelMobile/DelMobile";
 import NavbarFix from "./Navbar/Navbar";
+import FooterFix from "./Footer/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/edit-phone/:_id" component={EditMobile} />
         <Route path="/delete-phone/:_id" component={DelMobile} />
       </div>
+      <FooterFix />
     </BrowserRouter>
   );
 }
