@@ -7,41 +7,42 @@ import "./AddMobile.css";
 import api from "../../api/api";
 
 export default class Mobile extends React.Component {
-  ToISODate = (value) => {
+  ToDate = (value) => {
     let date = new Date(value);
+
     const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
 
     const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
+      date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth();
+
     const year = date.getFullYear();
+
     const allDate = `${year}-${month}-${day}`;
-    console.log(year);
+
     return allDate;
   };
 
   state = {
-    code: "",
+    code: [`#`],
     model: "",
     price: "",
     brand: "",
     color: "",
-    date: this.ToISODate(new Date()),
-    endDate: this.ToISODate(new Date().setDate(new Date().getDate() + 1)),
+    date: this.ToDate(new Date()),
+    endDate: this.ToDate(new Date().setDate(new Date().getDate() + 1)),
   };
 
   convertDate = (date) => new Date(date).toLocaleDateString("pt-BR");
 
-  Random(code) {
-    let maxNumber = 1000000;
-    let randomNumber = Math.floor(Math.random(code) * maxNumber + 1);
-    return randomNumber;
-  }
+  handleAddClick = () => {
+    const randomCode = Math.floor(Math.random() * 100000000);
+    return this.state.code.push(randomCode);
+  };
 
   handleChange = (event) => {
     let value = event.target.value;
-    this.setState({ [event.target.name]: value });
+    let name = event.target.name;
+    this.setState({ [name]: value });
   };
 
   Value = () => {
@@ -108,17 +109,24 @@ export default class Mobile extends React.Component {
                       name="color"
                       onChange={this.handleChange}
                       value={this.state.color}
-                      items={["BLACK", "WHITE", "GOLD", "PINK"]}
+                      items={[
+                        "Selecionar Cor",
+                        "BLACK",
+                        "WHITE",
+                        "GOLD",
+                        "PINK",
+                      ]}
                       required
                     />
                   </th>
                   <th>
                     <TextInput
                       label="Preço"
-                      type="text"
+                      type="number"
                       name="price"
                       onChange={this.handleChange}
                       value={this.state.price}
+                      input=""
                       required
                     />
                   </th>
@@ -140,7 +148,7 @@ export default class Mobile extends React.Component {
                       name="endDate"
                       onChange={this.handleChange}
                       value={this.state.endDate}
-                      min={this.ToISODate(new Date(this.state.date))}
+                      min={this.state.date}
                       required
                     />
                   </th>
@@ -153,7 +161,11 @@ export default class Mobile extends React.Component {
               <h6>Voltar</h6>
             </Link>
             <div className="salve">
-              <button className="btn btn-outline-dark text-black" type="submit">
+              <button
+                className="btn btn-outline-dark text-black"
+                type="submit"
+                onClick={this.handleAddClick}
+              >
                 <h6>Salvar</h6>
               </button>
             </div>

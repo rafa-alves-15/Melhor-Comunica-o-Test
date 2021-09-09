@@ -13,8 +13,8 @@ function App() {
       <div className="container mt-5">
         <Route exact path="/" component={ListPhone} />
         <Route path="/add-phone" component={AddMobile} />
-        <Route path="/edit-phone/:id" component={EditMobile} />
-        <Route path="/delete-phone/:id" component={DelMobile} />
+        <Route path="/edit-phone/:_id" component={EditMobile} />
+        <Route path="/delete-phone/:_id" component={DelMobile} />
       </div>
     </BrowserRouter>
   );

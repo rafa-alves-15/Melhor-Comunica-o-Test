@@ -1,4 +1,4 @@
-.logo {
+.barra {
   background-color: #054a91;
   justify-content: center;
 }
@@ -16,8 +16,8 @@
   opacity: 1;
 }
 
-.fas {
+.logo {
   color: black;
-  margin-top: 42%;
-  font-size: 110%;
+  font-size: 90%;
+  margin-top: 50%;
 }

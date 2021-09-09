@@ -5,7 +5,7 @@ import api from "../../api/api"
 export default class DeletePhone extends React.Component {
   
     componentDidMount = () => {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params._id;
 
     api
       .delete(`/phone/${id}`)

@@ -21,43 +21,59 @@ export default class ListPhone extends React.Component {
     return (
       <div>
         <div>
-          <tr className="d-flex justify-content-between ">
-            <th>
-              <h3>Produto</h3>
-            </th>
-            <th>
-              <Link to="add-phone">
-                <h3>
-                  <i className="fas fa-mobile-alt" />
-                </h3>
-              </Link>
-            </th>
-          </tr>
-          <table className="table table-hover border border-secondary justify-content-">
+          <table>
             <thead>
               <tr>
-                <th>Codigo</th>
-                <th>Modelo</th>
-                <th>Preço</th>
-                <th>Marca</th>
-                <th>Cor</th>
+                <th>
+                  <h3>Produto</h3>
+                </th>
+                <th>
+                  <Link className="btn btn-outline-dark" to="add-phone">
+                    <h5>
+                      +<i className="fas fa-mobile-alt"> Adicionar</i>
+                    </h5>
+                  </Link>
+                </th>
               </tr>
             </thead>
-            <tbody>
-              {this.state.phone.map((mobile) => {
-                return (
-                  <tr key={mobile.id}>
-                    <td>{mobile.code}</td>
-                    <td>{mobile.model}</td>
-                    <td>{mobile.price}</td>
-                    <td>{mobile.brand}</td>
-                    <td>{mobile.color}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
           </table>
         </div>
+        <table className="table table-hover border border-secondary ">
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Modelo</th>
+              <th>Preço</th>
+              <th>Marca</th>
+              <th>Cor</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.phone.map((mobile) => {
+              return (
+                <tr key={mobile._id}>
+                  <td>{mobile.code}</td>
+                  <td>{mobile.model}</td>
+                  <td>{mobile.price}</td>
+                  <td>{mobile.brand}</td>
+                  <td>{mobile.color}</td>
+                  <td className="d-flex align-items-center">
+                    <Link to={`/edit-phone/${mobile._id}`} title="Edit">
+                      <i className="fas fa-pen text-black"></i>
+                    </Link>
+
+                    <Link
+                      to={`/delete-phone/${mobile._id}`}
+                      title="Delete Mobile"
+                    >
+                      <i className="fas fa-trash text-black"></i>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }

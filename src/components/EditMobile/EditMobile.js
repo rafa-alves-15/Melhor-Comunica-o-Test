@@ -7,52 +7,42 @@ import "./EditMobile.css";
 import api from "../../api/api";
 
 export default class Mobile extends React.Component {
-  ToISODate = (value) => {
-    let date = new Date(value);
-    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-
-    const month =
-      date.getMonth() + 1 < 10
-        ? `0${date.getMonth() + 1}`
-        : date.getMonth() + 1;
-    const year = date.getFullYear();
-    const allDate = `${year}-${month}-${day}`;
-    console.log(year);
-    return allDate;
-  };
-
-  state = {
-    code: "",
-    model: "",
-    price: "",
-    brand: "",
-    color: "",
-    date: this.ToISODate(new Date()),
-    endDate: this.ToISODate(new Date().setDate(new Date().getDate() + 1)),
-  };
-
-
   componentDidMount = async () => {
     try {
-      const id = this.props.match.params.id;
-
-      const res = await api.get(
-        `/phone/${id}`
-      );
-
-      this.setState({ ...res.data });
+      const id = this.props.match.params._id;
+      const res = await api.get(`/phone/${id}`);
+      const { _id, ...data } = res.data;
+      this.setState({ ...data });
     } catch (err) {
       console.log(err);
     }
   };
 
-  convertDate = (date) => new Date(date).toLocaleDateString("pt-BR");
+  ToDate = (value) => {
+    let date = new Date(value);
 
-  Random(code) {
-    let maxNumber = 1000000;
-    let randomNumber = Math.floor(Math.random(code) * maxNumber + 1);
-    return randomNumber;
-  }
+    const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+
+    const month =
+      date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth();
+
+    const year = date.getFullYear();
+
+    const allDate = `${year}-${month}-${day}`;
+
+    return allDate;
+  };
+
+  state = {
+    model: "",
+    price: "",
+    brand: "",
+    color: "",
+    date: this.ToDate(new Date()),
+    endDate: this.ToDate(new Date().setDate(new Date().getDate() + 1)),
+  };
+
+  convertDate = (date) => new Date(date).toLocaleDateString("pt-BR");
 
   handleChange = (event) => {
     let value = event.target.value;
@@ -69,10 +59,10 @@ export default class Mobile extends React.Component {
   };
 
   hadleSubmit = (event) => {
-    const id = this.props.match.params.id;
+    const id = this.props.match.params._id;
     event.preventDefault();
 
-    api 
+    api
       .patch(`/phone/${id}`, JSON.stringify(this.Value()))
       .then((res) => {
         console.log(res);
@@ -131,7 +121,7 @@ export default class Mobile extends React.Component {
                   <th>
                     <TextInput
                       label="Preço"
-                      type="text"
+                      type="number"
                       name="price"
                       onChange={this.handleChange}
                       value={this.state.price}
@@ -156,7 +146,7 @@ export default class Mobile extends React.Component {
                       name="endDate"
                       onChange={this.handleChange}
                       value={this.state.endDate}
-                      min={this.ToISODate(new Date(this.state.date))}
+                      min={this.state.date}
                       required
                     />
                   </th>
