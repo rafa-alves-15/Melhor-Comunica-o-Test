@@ -1,4 +1,4 @@
 # Link do Teste
 
-(https://melhor-phones.netlify.app/).
+Link do Site: https://melhor-phones.netlify.app/
 
